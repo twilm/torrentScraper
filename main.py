@@ -22,21 +22,18 @@ table = soup.find('ol')
 span = []
 for listing in soup.find_all('li'):
     for items in listing:
-        print(items.get_text().strip(' ').strip('  ').strip(' ').split('\n'))
-print(span)
-
-        #spans += items.get_text().strip().split(' ')
-#print(spans)
-
-
-
-#   for name in listing.find():
-#       print(name)
-
-
-
-#print(torrent_li)
-#driver.quit()
+        span += items.get_text().strip(' ').strip('  ').strip(' ').split('\n')
+#print(span)
+newDict = {}
+span_dict = {k: v for v, k in enumerate(span)}
+# This is to filter out entries by their key, as span returns all items, but
+# I would like them organized, an remove any not needed.
+# Just do the math for the ones you want in new Dict next time you are playing
+# around. Current as of 05/06 15:05 is just placeholder
+for (k, v) in span_dict.items():
+    if v % 2 == 0:
+        newDict[k] = v
+print(newDict)
 
 
 
