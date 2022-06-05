@@ -18,10 +18,18 @@ driver.get(f"https://thepiratebay.org/search.php?q={i}")
 driver.find_element(By.ID, "st")
 
 soup = BeautifulSoup(driver.page_source, 'lxml')
-table = soup.find('section', class_='col-center')
+table = soup.find('ol')
+span = []
 for listing in soup.find_all('li'):
     for items in listing:
-        print(items.get_text())
+        print(items.get_text().strip(' ').strip('  ').strip(' ').split('\n'))
+print(span)
+
+        #spans += items.get_text().strip().split(' ')
+#print(spans)
+
+
+
 #   for name in listing.find():
 #       print(name)
 
